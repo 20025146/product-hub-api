@@ -2,26 +2,51 @@ const mongoose = require('mongoose');
 
 const productsSchema = new mongoose.Schema(
   {
-    service_name: {
+    name: {
       type: String,
       required: true,
+      trim: true,
     },
-    service_type: {
+    description: {
       type: String,
+      required: true,
+      trim: true,
     },
     price: {
-      type: String,
+      type: Number,
+      required: true,
+      min: 0,
     },
-    duration: {
+    category: {
       type: String,
+      required: true,
+      enum: ['electronics', 'clothing', 'home', 'books', 'beauty'], // Based on the sample data
+      lowercase: true,
     },
-
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'users', // Reference to the User model
+    stock: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    createdAt: {
+      type: Date,
+      required: true,
+      default: Date.now,
+    },
+    updatedAt: {
+      type: Date,
+      required: true,
+      default: Date.now,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true, // This will automatically update createdAt and updatedAt
+  }
 );
 
 module.exports = productsSchema;
