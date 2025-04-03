@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const CONSTANT_ENUM = require('../helpers/enums/constant_enums');
 
 const userSchema = new mongoose.Schema(
   {
@@ -17,7 +16,7 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 module.exports = userSchema;
