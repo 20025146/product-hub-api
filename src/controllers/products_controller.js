@@ -37,8 +37,8 @@ const createProduct = async (req, res) => {
 };
 
 const getProduct = async (req, res) => {
-  const { productID } = req.params;
-  const objectId = new mongoose.Types.ObjectId(productID);
+  const { productId } = req.params;
+  const objectId = new mongoose.Types.ObjectId(productId);
 
   const products = await ProductServices.getProductByID(objectId);
 
@@ -48,8 +48,8 @@ const getProduct = async (req, res) => {
   });
 };
 const deleteProduct = async (req, res) => {
-  const { productID } = req.params;
-  const products = await ProductServices.deleteProduct(productID);
+  const { productId } = req.params;
+  const products = await ProductServices.deleteProduct(productId);
 
   return res.json({
     data: products,
